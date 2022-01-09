@@ -1,0 +1,51 @@
+<html>
+    <head>
+
+    </head>
+    <style>
+        #title{
+            padding-top: 15px;
+            padding-bottom: 15px;
+            margin-left: 600px;
+            margin-right: 700;
+            padding-right: 10px;
+            text-align: center;
+            border: dashed;
+            border-color: red;
+            border-top-color: blue;
+            border-bottom-color: blue;
+            background-color: yellow;
+        }
+    </style>
+    <body style="background-color: lightcyan;">
+        <h1 id='title'>Office Quote Library</h1>
+        <br><br><br>
+        <select id='person_select'>
+            {%for i in people%}
+            <option value='{{ i.id }}''>
+                {{ i.name }}
+            </option>
+            {%endfor%}
+        </select>
+        <!--<h2>Quote:</h2>  <h2 style="margin-left: 75%; margin-top: -40px;">Episode Title:</h2>
+        <h3>No god please no, no, nooooooooooooooooooooooo</h3> <h3 style="margin-left: 80%; margin-top: -35px;">Frame Toby</h3>-->
+   <button onclick='window.location.href = `/quotes/${document.getElementById("person_select").value}`''>See Person's Quotes</button>
+            
+
+   <br>
+   <br>
+   <a href="/add_person"><button>Add Person</button></a>
+        
+            {%for i in people%}
+    <div style="width: 20%; display: flex; justify-content: center; border: 1px solid grey; border-radius: 6px; background: rgb(255, 255, 255); margin: 20px;">
+        {{i.name}}, 
+        {{i.role}},  
+        {{i.gender}}  
+       
+
+    </div>
+    
+    {%endfor%}
+    
+    </body>
+</html>
