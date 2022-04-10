@@ -4,7 +4,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///officequotes"
+#local computer:
+#app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///officequotes"
+
+#heroku:
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://vjckfivgpueqgn:774fb813965cd69e6efff81622f385dc1cc403b86a9a2e5a4854747e1083e248@ec2-18-214-134-226.compute-1.amazonaws.com:5432/d9j02mjt4nt7gp"
+
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 db_session = db.session
