@@ -5,10 +5,10 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 #local computer:
-#app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///officequotes"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///officequotes"
 
 #heroku:
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://vjckfivgpueqgn:774fb813965cd69e6efff81622f385dc1cc403b86a9a2e5a4854747e1083e248@ec2-18-214-134-226.compute-1.amazonaws.com:5432/d9j02mjt4nt7gp"
+#app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://vjckfivgpueqgn:774fb813965cd69e6efff81622f385dc1cc403b86a9a2e5a4854747e1083e248@ec2-18-214-134-226.compute-1.amazonaws.com:5432/d9j02mjt4nt7gp"
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -39,15 +39,15 @@ class Quote(db.Model):
 
 @app.route('/')
 def index():
-    people = db_session.query(Person).all()
+    people = db_session.query(Person).filter_by(approved=True)
     context = {'name': 'Jim','age': ':)'}
     nums = [{'name': 'Jim','age': ':)'},{'name': 'Dwight','age': ';)'}]
     return render_template('index.html', context=context, people=people)
 
 @app.route('/quotes/<person_id>')
 def quotes(person_id):
-  quotes = db_session.query(Quote).filter_by(person_id=person_id).all()
-  person = db_session.query(Person).filter_by(id=person_id).first()
+  quotes = db_session.query(Quote).filter_by(person_id=person_id, approved=True).all()
+  person = db_session.query(Person).filter_by(id=person_id, approved=True).first()
   return render_template('quotes.html', quotes=quotes, person=person)
 
 @app.route('/add_person', methods=['GET','POST'])
@@ -75,7 +75,7 @@ def add_quote():
 @app.route('/quotes')
 def quote():
 
-  quotes = db_session.query(Quote).all()
-  person = db_session.query(Person).all()
+  quotes = db_session.query(Quote).filter_by(approved=True)
+  person = db_session.query(Person).filter_by(approved=True)
   return render_template('all_quotes.html', quotes=quotes, person=person)
   
