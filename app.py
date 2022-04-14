@@ -20,6 +20,7 @@ class Person(db.Model):
     name = db.Column(db.Text())
     role = db.Column(db.Text())
     gender = db.Column(db.Text())
+    approved = db.Column(db.Boolean, default=False, nullable=False)
 
     def __repr__(self):
         return self.name
@@ -31,6 +32,7 @@ class Quote(db.Model):
     episode = db.Column(db.Integer)
     season = db.Column(db.Integer)
     person_id = db.Column(db.Integer, db.ForeignKey('person.id'))
+    approved = db.Column(db.Boolean, default=False, nullable=False)
 
     def __repr__(self):
         return self.quote
