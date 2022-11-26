@@ -8,7 +8,7 @@ app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///officequotes"
 
 #heroku:
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://vjckfivgpueqgn:774fb813965cd69e6efff81622f385dc1cc403b86a9a2e5a4854747e1083e248@ec2-18-214-134-226.compute-1.amazonaws.com:5432/d9j02mjt4nt7gp"
+app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://wyattaddie:Mn3g5WBs_55AFmb@wyattaddie.mysql.pythonanywhere-services.com/wyattaddie$default"
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -52,9 +52,9 @@ def quotes(person_id):
 
 @app.route('/add_person', methods=['GET','POST'])
 def add_person():
-  
+
   if flask.request.method == 'POST':
-    
+
     new_person = Person(name=flask.request.form.get('name'),role=flask.request.form.get('role'),gender=flask.request.form.get('gender'))
     db_session.add(new_person)
     db_session.commit()
@@ -63,9 +63,9 @@ def add_person():
 
 @app.route('/add_quote', methods=['GET','POST'])
 def add_quote():
-  
+
   if flask.request.method == 'POST':
-    
+
     new_quote = Quote(quote=flask.request.form.get('quote'),episode=flask.request.form.get('episode'),season=flask.request.form.get('season'),person_id=flask.request.form.get('person_id'))
     db_session.add(new_quote)
     db_session.commit()
@@ -78,4 +78,3 @@ def quote():
   quotes = db_session.query(Quote).filter_by(approved=True)
   person = db_session.query(Person).filter_by(approved=True)
   return render_template('all_quotes.html', quotes=quotes, person=person)
-  
