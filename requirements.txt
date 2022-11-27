@@ -11,9 +11,12 @@ itsdangerous==1.1.0
 Jinja2==2.11.3
 Mako==1.1.4
 MarkupSafe==1.1.1
+mysql-connector-python==8.0.31
+protobuf==3.20.1
 psycopg2-binary==2.8.6
 pycparser==2.21
 python-dateutil==2.8.1
+python-dotenv==0.21.0
 python-editor==1.0.4
 six==1.16.0
 SQLAlchemy==1.4.6

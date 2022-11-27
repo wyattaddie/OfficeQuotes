@@ -3,12 +3,13 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-app = Flask(__name__)
-#local computer:
-#app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///officequotes"
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
-#heroku:
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://vjckfivgpueqgn:774fb813965cd69e6efff81622f385dc1cc403b86a9a2e5a4854747e1083e248@ec2-18-214-134-226.compute-1.amazonaws.com:5432/d9j02mjt4nt7gp"
+app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('MYSQL_DB_URI')
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -78,4 +79,8 @@ def quote():
   quotes = db_session.query(Quote).filter_by(approved=True)
   person = db_session.query(Person).filter_by(approved=True)
   return render_template('all_quotes.html', quotes=quotes, person=person)
+
+@app.route('/test')
+def test():
   
+  return os.environ.get('wyatt')
