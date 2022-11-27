@@ -1,14 +1,31 @@
 <body>
+    <style>
+        input,select{
+            width: 13em;
+            height: 2em;
+            border-radius: 6px;
+            border: 1px solid blue;
+            background: orange;
+        }
+    </style>
     <h1>Add Quote</h1><br><br>
     <form method="POST">
         <label>quote</label><br>
         <input name="quote" required><br>
         <label>episode</label><br>
-        <input name="episode" required><br>
+        <input name="episode" type="number" required><br>
         <label>season</label><br>
-        <input name="season" required><br>
-        <label>person_id</label><br>
-        <input name="person_id" required><br><br>
+        <input name="season" type="number" required><br>
+        {% if user_id %}
+        <input name="person_id" value={{user_id}} hidden required><br><br>
+        {% else %}
+        <br>
+        <select name="person_id">
+            {% for i in people %}
+            <option value="{{i.id}}">{{i.name}}</option>
+            {% endfor %}
+        </select><br><br>
+        {% endif %}
         <input type="submit" value="Submit">
     </form>
 </body>

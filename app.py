@@ -71,7 +71,9 @@ def add_quote():
     db_session.add(new_quote)
     db_session.commit()
     return flask.redirect('/quotes')
-  return render_template('add_quote.html')
+  user_id = flask.request.args.get('person')
+  people = db_session.query(Person).filter_by(approved=True)
+  return render_template('add_quote.html',user_id=user_id,people=people)
 
 @app.route('/quotes')
 def quote():

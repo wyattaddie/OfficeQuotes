@@ -6,9 +6,7 @@
         #title{
             padding-top: 15px;
             padding-bottom: 15px;
-            margin-left: 600px;
-            margin-right: 700;
-            padding-right: 10px;
+            width: 9em;
             text-align: center;
             border: dashed;
             border-color: red;
@@ -16,9 +14,16 @@
             border-bottom-color: blue;
             background-color: orange;
         }
+        .centered-content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
     <body style="background-color: lightcyan;">
-        <h1 id='title'>Office Quote Library</h1>
+        <div class="centered-content">
+            <h1 id='title'>Office Quote Library</h1>
+        </div>
         <br><br><br>
         <select id='person_select'>
             {%for i in people%}
