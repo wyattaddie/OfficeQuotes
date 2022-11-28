@@ -82,13 +82,6 @@ def quote():
   person = db_session.query(Person).filter_by(approved=True)
   return render_template('all_quotes.html', quotes=quotes, person=person)
 
-@app.route('/people')
-def people():
-
-  people = db_session.query(Person).filter_by(approved=True)
-  context = {'name': 'Jim','age': ':)'}
-  return render_template('all_people.html', context=context, people=people)
-
 @app.route('/test')
 def test():
   
