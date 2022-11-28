@@ -1,24 +1,29 @@
 <html>
     <head>
-
+        <title>{{person.name}}'s quotes</title>
     </head>
     <style>
         #title{
             padding-top: 15px;
             padding-bottom: 15px;
-            margin-left: 600px;
-            margin-right: 700;
-            padding-right: 10px;
+            width: 9em;
             text-align: center;
             border: dashed;
             border-color: red;
             border-top-color: blue;
             border-bottom-color: blue;
-            background-color: yellow;
+            background-color: orange;
+        }
+        .centered-content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
     <body style="background-color: lightcyan;">
-        <h1 id='title'>Quote Library For {{person.name}}</h1>
+        <div class="centered-content">
+            <h1 id='title'>Quote Library For {{person.name}}</h1>
+        </div>
         <br><br><br>
         <!--<h2>Quote:</h2>  <h2 style="margin-left: 75%; margin-top: -40px;">Episode Title:</h2>
         <h3>No god please no, no, nooooooooooooooooooooooo</h3> <h3 style="margin-left: 80%; margin-top: -35px;">Frame Toby</h3>-->
