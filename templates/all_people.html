@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>All Quotes</title>
+        <title>All People</title>
     </head>
     <style>
         #title{
@@ -38,22 +38,19 @@
     </style>
     <body style="background-color: lightcyan;">
         <a href="/"><div class="centered-content">
-            <h1 id='title'>Office Quote Library</h1>
+            <h1 id='title'>Office Person Library</h1>
         </div></a>
         <br><br><br>
         <!--<h2>Quote:</h2>  <h2 style="margin-left: 75%; margin-top: -40px;">Episode Title:</h2>
         <h3>No god please no, no, nooooooooooooooooooooooo</h3> <h3 style="margin-left: 80%; margin-top: -35px;">Frame Toby</h3>-->
     
     <a href="/"><button>People</button></a>
-    <a href="/add_quote"><button>Add Quote</button></a>
-        {%for i in quotes%}
-    <div style="width: 20%; display: flex; justify-content: center; border: 1px solid grey; border-radius: 6px; background: rgb(255, 255, 255); margin: 20px;">
-        {{i.quote}}, 
-        {{i.episode}},  
-        {{i.season}}, 
-        {{i.person_id}} 
-       
-
+    <a href="/add_person"><button>Add Person</button></a>
+        {%for i in people%}
+    <div style="width: 13%; display: flex; justify-content: center; border: 1px solid grey; border-radius: 6px; background: rgb(255, 255, 255); margin: 20px;">
+        {{i.id}},
+        {{i.name}},
+        {{i.role}}
     </div>
     
     {%endfor%}
