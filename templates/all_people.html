@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>All People</title>
+    </head>
+    <style>
+        #title{
+            padding-top: 15px;
+            padding-bottom: 15px;
+            width: 9em;
+            text-align: center;
+            border: dashed;
+            border-color: red;
+            border-top-color: blue;
+            border-bottom-color: blue;
+            background-color: orange;
+        }
+        .centered-content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        a:link{
+            text-decoration: none;
+            color: black;
+        }
+        a:active{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            text-decoration: none;
+            color: black;
+        }
+        a:visited{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+    <body style="background-color: lightcyan;">
+        <a href="/"><div class="centered-content">
+            <h1 id='title'>Office Person Library</h1>
+        </div></a>
+        <br><br><br>
+        <!--<h2>Quote:</h2>  <h2 style="margin-left: 75%; margin-top: -40px;">Episode Title:</h2>
+        <h3>No god please no, no, nooooooooooooooooooooooo</h3> <h3 style="margin-left: 80%; margin-top: -35px;">Frame Toby</h3>-->
+
+    <a href="/"><button>People</button></a>
+    <a href="/add_person"><button>Add Person</button></a>
+        {%for i in people%}
+    <div style="width: 13%; display: flex; justify-content: center; border: 1px solid grey; border-radius: 6px; background: rgb(255, 255, 255); margin: 20px;">
+        {{i.id}},
+        {{i.name}},
+        {{i.role}}
+    </div>
+
+    {%endfor%}
+
+    </body>
+</html>
