@@ -2,7 +2,15 @@
     <title>Add Person</title>
 </head>
 <body>
-    <h1>Add User</h1><br><br>
+    <style>
+        input,select{
+            width: 13em;
+            height: 2em;
+            border-radius: 4px;
+            border-width: thin;
+        }
+    </style>
+    <h1>Add Person</h1><br><br>
     <form method="POST">
         <label>Name</label><br>
         <input name="name" required><br>
@@ -12,4 +20,5 @@
         <input name="gender" required><br><br>
         <input type="submit" value="Submit">
     </form>
+    <a href="/"><button>Home</button></a>
 </body>

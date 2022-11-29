@@ -25,6 +25,8 @@
             <h1 id='title'>Office Quote Library</h1>
         </div>
         <br><br><br>
+        <a href="/quotes"><button>All Quotes</button></a>
+        <br><br>
         <select id='person_select'>
             {%for i in people%}
             <option value='{{ i.id }}''>
@@ -32,25 +34,19 @@
             </option>
             {%endfor%}
         </select>
-        <!--<h2>Quote:</h2>  <h2 style="margin-left: 75%; margin-top: -40px;">Episode Title:</h2>
-        <h3>No god please no, no, nooooooooooooooooooooooo</h3> <h3 style="margin-left: 80%; margin-top: -35px;">Frame Toby</h3>-->
-   <button onclick='window.location.href = `/quotes/${document.getElementById("person_select").value}`''>See Person's Quotes</button>
-            
+   <button onclick='window.location.href = `/quotes/${document.getElementById("person_select").value}`''>See Person's Quotes</button><br><br>
 
-   <br>
-   <br>
    <a href="/add_person"><button>Add Person</button></a>
-        
-            {%for i in people%}
+        {%for i in people%}
     <div style="width: 20%; display: flex; justify-content: center; border: 1px solid grey; border-radius: 6px; background: rgb(255, 255, 255); margin: 20px;">
-        {{i.name}}, 
-        {{i.role}},  
-        {{i.gender}}  
-       
+        {{i.name}},
+        {{i.role}},
+        {{i.gender}}
+
 
     </div>
-    
+
     {%endfor%}
-    
+
     </body>
 </html>
