@@ -53,9 +53,9 @@ def quotes(person_id):
 
 @app.route('/add_person', methods=['GET','POST'])
 def add_person():
-  
+
   if flask.request.method == 'POST':
-    
+
     new_person = Person(name=flask.request.form.get('name'),role=flask.request.form.get('role'),gender=flask.request.form.get('gender'))
     db_session.add(new_person)
     db_session.commit()
@@ -64,9 +64,9 @@ def add_person():
 
 @app.route('/add_quote', methods=['GET','POST'])
 def add_quote():
-  
+
   if flask.request.method == 'POST':
-    
+
     new_quote = Quote(quote=flask.request.form.get('quote'),episode=flask.request.form.get('episode'),season=flask.request.form.get('season'),person_id=flask.request.form.get('person_id'))
     db_session.add(new_quote)
     db_session.commit()
@@ -82,14 +82,3 @@ def quote():
   person = db_session.query(Person).filter_by(approved=True)
   return render_template('all_quotes.html', quotes=quotes, person=person)
 
-@app.route('/people')
-def people():
-    people = db_session.query(Person).filter_by(approved=True)
-    context = {'name': 'Jim','age': ':)'}
-    nums = [{'name': 'Jim','age': ':)'},{'name': 'Dwight','age': ';)'}]
-    return render_template('all_people.html', context=context, people=people)
-
-@app.route('/test')
-def test():
-  
-  return os.environ.get('wyatt')
