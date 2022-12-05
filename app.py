@@ -82,3 +82,7 @@ def quote():
   person = db_session.query(Person).filter_by(approved=True)
   return render_template('all_quotes.html', quotes=quotes, person=person)
 
+
+@app.route('/test')
+def test():
+  return 'Hi'
